@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Simple Calculator</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="Images/cal.png" type="image/icon type">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&family=Open+Sans:wght@300&family=Roboto&display=swap" rel="stylesheet">
+
+</head>
+<body>
+
+  <div class="background">
+    <img class="sky" src="Images/164546.png">
+    <img class="sky" src="Images/164546.png">
+    <img class="sky" src="Images/164546.png">
+    <img class="sky" src="Images/164546.png">
+
+
+    <div class="container" id="calculator">
+      <input type="text" id="display" readonly>
+      <button class="buttons" onclick="appendToDisplay('7')">7</button>
+      <button class="buttons" onclick="appendToDisplay('8')">8</button>
+      <button class="buttons" onclick="appendToDisplay('9')">9</button>
+      <button class="buttons" onclick="clearDisplay()">C</button>
+      <button class="buttons" onclick="appendToDisplay('4')">4</button>
+      <button class="buttons" onclick="appendToDisplay('5')">5</button>
+      <button class="buttons" onclick="appendToDisplay('6')">6</button>
+      <button class="buttons" onclick="operate('/')">&#247;</button>
+      <button class="buttons" onclick="appendToDisplay('1')">1</button>
+      <button class="buttons" onclick="appendToDisplay('2')">2</button>
+      <button class="buttons" onclick="appendToDisplay('3')">3</button>
+      <button class="buttons" onclick="operate('*')">x</button>
+      <button class="buttons" onclick="appendToDisplay('0')">0</button>
+      <button class="buttons" onclick="operate('+')">+</button>
+      <button class="buttons" onclick="operate('-')">-</button>
+      <button class="buttons" onclick="calculate()">=</button>
+    </div>
+
+    
+
+  </div>
+
+
+
+
+  <script>
+    let display = document.getElementById('display');
+    let currentInput = '';
+
+    function appendToDisplay(value) {
+      currentInput += value;
+      display.value = currentInput;
+    }
+
+    function clearDisplay() {
+      currentInput = '';
+      display.value = '';
+    }
+
+    function operate(operator) {
+      if (currentInput !== '') {
+        currentInput += operator;
+        display.value = currentInput;
+      }
+    }
+
+    function calculate() {
+      if (currentInput !== '') {
+        try {
+          currentInput = eval(currentInput).toString();
+          display.value = currentInput;
+        } catch (error) {
+          display.value = 'Error';
+        }
+      }
+    }
+  </script>
+</body>
+</html>
